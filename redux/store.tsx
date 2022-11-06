@@ -1,7 +1,10 @@
+// https://codesandbox.io/s/mfetp?file=/src/store.js
+// example of saga
 import { configureStore } from '@reduxjs/toolkit';
 import thunk, { ThunkMiddleware } from 'redux-thunk';
 import logger from 'redux-logger'
 import RootReducers from './rootReducers';
+import createSagaMiddleware from "redux-saga";
 const store = configureStore({
 reducer:RootReducers,
 middleware:(getDefaultMiddleware) =>getDefaultMiddleware().concat([thunk,logger])
