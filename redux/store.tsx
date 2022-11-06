@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import thunk from 'redux-thunk';
+import thunk, { ThunkMiddleware } from 'redux-thunk';
 import logger from 'redux-logger'
 import RootReducers from './rootReducers';
 const store = configureStore({
 reducer:RootReducers,
-middleware:[thunk,logger]
+middleware:(getDefaultMiddleware) =>getDefaultMiddleware().concat([thunk,logger])
 })
 
 export type RootState = ReturnType<typeof store.getState>
