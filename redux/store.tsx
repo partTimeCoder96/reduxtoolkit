@@ -5,9 +5,11 @@ import thunk, { ThunkMiddleware } from 'redux-thunk';
 import logger from 'redux-logger'
 import RootReducers from './rootReducers';
 import createSagaMiddleware from "redux-saga";
+
+const sagaMiddlware = createSagaMiddleware();
 const store = configureStore({
 reducer:RootReducers,
-middleware:(getDefaultMiddleware) =>getDefaultMiddleware().concat([thunk,logger])
+middleware:(getDefaultMiddleware) =>getDefaultMiddleware().concat([sagaMiddlware,logger])
 })
 
 export type RootState = ReturnType<typeof store.getState>
